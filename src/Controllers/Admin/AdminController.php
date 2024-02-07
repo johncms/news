@@ -101,7 +101,7 @@ class AdminController extends BaseAdminController
             'title'       => __('Settings'),
             'page_title'  => __('Settings'),
             'back_url'    => route('news.admin.index'),
-            'form_action' => route('news.admin.settingsStore'),
+            'form_action' => route('news.admin.settings'),
             'message'     => '',
         ];
         $this->render->addData(
@@ -141,7 +141,7 @@ class AdminController extends BaseAdminController
             }
 
             $session->flash('message', __('Settings saved!'));
-            return new RedirectResponse(route('news.admin.settingsStore'));
+            return new RedirectResponse(route('news.admin.settings'));
         }
 
         $data['message'] = $session->getFlash('message');

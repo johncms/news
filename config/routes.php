@@ -34,24 +34,17 @@ return function (RouteCollection $router) {
     $router->group('/admin/news', function (RouteCollection $route) {
         $route->get('/', [AdminController::class, 'index'])->setName('news.admin.index');
         $route->get('/content/{section_id:number?}', [AdminController::class, 'section'])->setName('news.admin.section');
-        $route->get('/settings/', [AdminController::class, 'settings'])->setName('news.admin.settings');
-        $route->post('/settings/', [AdminController::class, 'settings'])->setName('news.admin.settingsStore');
+        $route->map(['GET', 'POST'], '/settings/', [AdminController::class, 'settings'])->setName('news.admin.settings');
 
         // Articles
-        $route->get('/edit_article/{article_id:number}/', [AdminArticleController::class, 'edit'])->setName('news.admin.article.edit');
-        $route->post('/edit_article/{article_id:number}/', [AdminArticleController::class, 'edit'])->setName('news.admin.article.editStore');
-        $route->get('/add_article/{section_id:number?}', [AdminArticleController::class, 'add'])->setName('news.admin.article.add');
-        $route->post('/add_article/{section_id:number?}', [AdminArticleController::class, 'add'])->setName('news.admin.article.addStore');
-        $route->get('/del_article/{article_id:number}/', [AdminArticleController::class, 'del'])->setName('news.admin.article.del');
-        $route->post('/del_article/{article_id:number}/', [AdminArticleController::class, 'del'])->setName('news.admin.article.delStore');
+        $route->map(['GET', 'POST'], '/edit_article/{article_id:number}/', [AdminArticleController::class, 'edit'])->setName('news.admin.article.edit');
+        $route->map(['GET', 'POST'], '/add_article/{section_id:number?}', [AdminArticleController::class, 'add'])->setName('news.admin.article.add');
+        $route->map(['GET', 'POST'], '/del_article/{article_id:number}/', [AdminArticleController::class, 'del'])->setName('news.admin.article.del');
 
         // Sections
-        $route->get('/add_section/{section_id:number?}', [AdminSectionController::class, 'add'])->setName('news.admin.sections.add');
-        $route->post('/add_section/{section_id:number?}', [AdminSectionController::class, 'add'])->setName('news.admin.sections.add_store');
-        $route->get('/edit_section/{section_id:number}/', [AdminSectionController::class, 'edit'])->setName('news.admin.sections.edit');
-        $route->post('/edit_section/{section_id:number}/', [AdminSectionController::class, 'edit'])->setName('news.admin.sections.edit_store');
-        $route->get('/del_section/{section_id:number}/', [AdminSectionController::class, 'del'])->setName('news.admin.sections.del');
-        $route->post('/del_section/{section_id:number}/', [AdminSectionController::class, 'del'])->setName('news.admin.sections.del_store');
+        $route->map(['GET', 'POST'], '/add_section/{section_id:number?}', [AdminSectionController::class, 'add'])->setName('news.admin.sections.add');
+        $route->map(['GET', 'POST'], '/edit_section/{section_id:number}/', [AdminSectionController::class, 'edit'])->setName('news.admin.sections.edit');
+        $route->map(['GET', 'POST'], '/del_section/{section_id:number}/', [AdminSectionController::class, 'del'])->setName('news.admin.sections.del');
 
         // File uploader
         $route->post('/upload_file/', [AdminArticleController::class, 'loadFile'])->setName('news.admin.sections.loadFile');

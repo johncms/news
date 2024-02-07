@@ -71,7 +71,7 @@ class AdminArticleController extends BaseAdminController
         $this->navChain->add(__('Add article'));
 
         $data = [
-            'action_url' => route('news.admin.article.addStore', ['section_id' => $section_id]),
+            'action_url' => route('news.admin.article.add', ['section_id' => $section_id]),
             'back_url'   => route('news.admin.section', ['section_id' => $section_id]),
             'section_id' => $section_id,
             'fields'     => [
@@ -166,7 +166,7 @@ class AdminArticleController extends BaseAdminController
         }
 
         $data = [
-            'action_url' => route('news.admin.article.editStore', ['article_id' => $article->id]),
+            'action_url' => route('news.admin.article.edit', ['article_id' => $article->id]),
             'back_url'   => route('news.admin.section', ['section_id' => $article->section_id]),
             'article_id' => $article_id,
             'fields'     => [
@@ -268,7 +268,7 @@ class AdminArticleController extends BaseAdminController
         }
 
         $data['article'] = $article;
-        $data['action_url'] = route('news.admin.article.delStore', ['article_id' => $article_id]);
+        $data['action_url'] = route('news.admin.article.del', ['article_id' => $article_id]);
 
         return $this->render->render('johncms/news::admin/del', ['data' => $data]);
     }

@@ -62,7 +62,7 @@ class AdminSectionController extends BaseAdminController
         $this->navChain->add(__('Create section'));
 
         $data = [
-            'action_url' => route('news.admin.sections.add_store', ['section_id' => $section_id]),
+            'action_url' => route('news.admin.sections.add', ['section_id' => $section_id]),
             'back_url'   => route('news.admin.section', ['section_id' => $section_id]),
             'section_id' => $section_id,
             'fields'     => [
@@ -134,7 +134,7 @@ class AdminSectionController extends BaseAdminController
         $this->navChain->add(__('Edit section'));
 
         $data = [
-            'action_url' => route('news.admin.sections.edit_store', ['section_id' => $section_id]),
+            'action_url' => route('news.admin.sections.edit', ['section_id' => $section_id]),
             'back_url'   => route('news.admin.section', ['section_id' => $section->parent]),
             'section_id' => $section_id,
             'fields'     => [
@@ -208,7 +208,7 @@ class AdminSectionController extends BaseAdminController
         return $this->render->render('johncms/news::admin/del', [
             'data' => [
                 'section'    => $section,
-                'action_url' => route('news.admin.sections.del_store', ['section_id' => $section_id]),
+                'action_url' => route('news.admin.sections.del', ['section_id' => $section_id]),
             ],
         ]);
     }
