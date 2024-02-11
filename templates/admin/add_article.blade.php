@@ -125,7 +125,7 @@
             <div class="small text-muted"><?= __('Enter words or phrases separated by commas') ?></div>
         </div>
         @include(
-            'news::admin/ckeditor',
+            'johncms/news::admin/ckeditor',
             [
                 'label'        => __('Preview text'),
                 'errors'       => implode(', ', $data['errors']['preview_text'] ?? []),
@@ -135,7 +135,7 @@
                 'load_scripts' => true,
             ])
 
-        @include('news::admin/ckeditor',
+        @include('johncms/news::admin/ckeditor',
             [
                 'label'  => __('Text'),
                 'errors' => implode(', ', $data['errors']['text'] ?? []),
